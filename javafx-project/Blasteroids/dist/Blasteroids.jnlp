@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/C%3A/Documents+and+Settings/HP_Administrator/My+Documents/NetBeansProjects/Blasteroids/dist/" href="Blasteroids.jnlp">
+    <information>
+        <title>Blasteroids</title>
+        <vendor>HP_Administrator</vendor>
+        <homepage href="http://localhost:8082/servlet/org.netbeans.modules.javafx.project.JnlpDownloadServlet/C%3A/Documents+and+Settings/HP_Administrator/My+Documents/NetBeansProjects/Blasteroids/dist/"/>
+        <description>Blasteroids</description>
+        <offline-allowed/>
+        <shortcut>
+            <desktop/>
+        </shortcut>
+    </information>
+    <resources>
+        <j2se version="1.5+"/>
+        <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.2/javafx-rt.jnlp"/>
+        <jar href="Blasteroids.jar" main="true"/>
+    </resources>
+    <application-desc main-class="com.sun.javafx.runtime.main.Main">
+        <argument>MainJavaFXScript=blasteroids.Main</argument>
+    </application-desc>
+    <update check="background">
+</jnlp>
