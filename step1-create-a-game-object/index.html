@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+<title>HTML5-BLASTROIDS - STEP 1</title>
+<style type="text/css">
+#gameBoard {background-color: black; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/blastroids.js"></script>
+</head>
+<body>
+<input type="button" value="Start Game" id="btnStartGame" />&nbsp;
+<input type="button" value="Pause Game" id="btnPauseGame" />&nbsp;
+Frame Rate:<input type="text" size="50" id="txtFramesPerSecond" />
+<br>
+<canvas id="gameBoard" width="800" height="600"></canvas>
+</body>
+</html>
+<script>
+
+// mention that I love jquery, but try to use it only when I have to
+// so I'll prefix every var that is a jquery object with $
+// I'm going to see how long I can go without relying on jQuery
+
+// I left out a lot of code that would normally be added to bullet proof it,
+// so there are lots of variables that are publicly accessible that shouldn't be
+
+// note that the frame rate seems to max out at 60 (for me at least)
+
+(function(){
+
+	// check to make sure the browser supports canvas
+	try {
+		document.createElement("canvas").getContext("2d");
+	} catch (error) {
+		alert("Your browser does not support canvas");
+		return;
+	}
+	
+	// create an object that defines the game settings
+	var gameSettings = {
+		canvas: 	document.getElementById("gameBoard")
+	}
+	
+	
+alert(blastroids);	
+	// initialize the game engine
+	//var gameEngine = blastroids.gameEngine(gameSettings);
+	var gameEngine = new blastroids.GameEngine(gameSettings);
+
+	// add handlers for buttons that start/pause the game
+	btnStartGame.addEventListener('click', function() {
+		gameEngine.start();
+	}, false);
+
+	btnPauseGame.addEventListener('click', function() {
+		gameEngine.pause();
+	}, false);
+
+})();
+
+
+/*
+(function($){
+
+	
+
+	// global settings
+	var $stage = $("#stage"),
+		stage = $stage[0],
+		stageWidth = 1200,
+		stageHeight = 800,
+		ctx=stage.getContext("2d");
+
+	var shipImg = new Image();
+	shipImg.src = "images/ship.png";
+	var ship = new Ship(shipImg);
+
+	// onload
+	$(document).ready(function(){
+		
+		//$stage.width(400);
+		//$stage.height(300);
+		
+		//$stage.attr('width', 400);
+		//$stage.attr('height', 600);	
+
+		stage.width = stageWidth;
+		stage.height = stageHeight;
+
+		
+		ship.posX = 0;//stageWidth/2;
+		ship.posY = 0;//stageHeight/2;
+
+		ship.draw(ctx);
+		
+
+
+	});
+
+})(jQuery);
+*/
+</script>
