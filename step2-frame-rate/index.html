@@ -37,10 +37,20 @@ Frame Rate:<input type="text" size="50" id="txtFramesPerSecond" />
 		alert("Your browser does not support canvas");
 		return;
 	}
+
+	// NEW
+	var txtFramesPerSecond = document.getElementById("txtFramesPerSecond");
 	
 	// create an object that defines the game settings
 	var gameSettings = {
-		canvas: 	document.getElementById("stage")
+		canvas: 			document.getElementById("stage"),
+		// NEW
+		targetFrameRate: 	30,
+		onUpdate: 			function(){
+								//console.log("x: " + gameEngine.frameRate);
+								txtFramesPerSecond.value = gameEngine.getFrameRate();
+							}
+		// NEW END 
 	};
 	
 	
@@ -50,7 +60,7 @@ Frame Rate:<input type="text" size="50" id="txtFramesPerSecond" />
 	//var gameEngine = blastroids.GameEngine.init(gameSettings);
 	var gameEngine = blastroids.createGameEngine(gameSettings);
 
-alert(gameEngine);
+
 
 	// add handlers for buttons that start/pause the game
 	btnStartGame.addEventListener('click', function() {

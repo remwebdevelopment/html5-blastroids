@@ -69,15 +69,109 @@ blastroids.gameObject = function(img){
 };
 */
 
-/**
-@module blastroids
-*/
 var blastroids = {};
 
+/*it might be sort of helpful to stub out the GameEngine before filling in the code*/
+blastroids.createGameEngine = function(settings){
+	
+	// PRIVATE PROPERTIES
+	var canvas = settings.canvas,
+		ctx = canvas.getContext("2d"),
+		stageHeight = canvas.height,
+		stageWidth = canvas.width,
+		ship;
 
-/**
-@class GameEngine
+	// PUBLIC PROPERTIES
+	// TODO: we'll add some in the coming lessons
+
+	// SHIP SET UP
+	// get it's image first
+	var shipImg = new Image();
+	shipImg.src = "images/ship.png";
+	// create the ship and position it in the middle of the stage 
+	ship = new blastroids.GameObject(shipImg);
+	ship.posX = stageWidth/2;
+	ship.posY = stageHeight/2;
+
+	// RETURN THE PUBLIC API OBJECT
+	return {
+		start: 	start,
+		pause: 	pause 
+	};
+
+	
+	// PUBLIC METHODS
+	// note that public methods do get returned in the public api object
+	function start(){
+		// for now, start() will call _draw(), which draws all the objects on the stage
+		// but in the next lesson, we'll add an animation loop that calls _draw()
+		_draw(ctx);
+	}
+		
+	function pause(){
+		alert("TODO: implement pause in the next lesson");
+	}
+
+	// PRIVATE METHODS 
+	// note that they are prefixed with and underscore
+	// and that they don't get returned in the public api object
+	
+	function _draw(ctx){
+		// the _draw() method renders all of our game objects on the stage
+		// for now we just have single object (our ship)
+		ship.draw(ctx);
+	}
+}
+
+
+/*
+blastroids.GameEngine = (function(){
+
+	// private properties
+	var canvas,
+		ctx,
+		stageHeight,
+		stageWidth,
+		ship;
+	
+
+	function init(settings){
+		canvas = settings.canvas,
+		ctx = canvas.getContext("2d"),
+		stageHeight = canvas.height,
+		stageWidth = canvas.width;
+
+		var shipImg = new Image();
+			shipImg.src = "images/ship.png";
+
+		ship = new blastroids.GameObject(shipImg);
+		ship.posX = stageWidth/2;
+		ship.posY = stageHeight/2;
+
+		// return public api
+		return {
+			start: 	start,
+			pause: 	pause 
+		};
+	}
+
+	return {init: init};
+
+	function start(){
+		ship.draw(ctx);
+	}
+
+	function pause(){
+		alert("TODO: implement pause in the next lesson");
+	}
+
+	
+
+})();
+
 */
+
+/*
 blastroids.GameEngine = function(settings){
 	
 	this.canvas = settings.canvas,
@@ -100,7 +194,7 @@ blastroids.GameEngine.prototype.start = function(){
 blastroids.GameEngine.prototype.pause = function(){
 	alert("TODO: we'll implement pause() in the next lesson");
 };
-
+*/
 
 /*
 blastroids.GameEngine = (function(){
@@ -150,8 +244,10 @@ blastroids.GameObject = function(img){
 	this.posX = 0;
 	this.posY = 0;
 	this.img = img;
-	this.offsetX = -this.img.width/2;
-	this.offsetY = -this.img.height/2;
+	this.width = img.width;
+	this.height = img.height;
+	this.offsetX = -this.width/2;
+	this.offsetY = -this.height/2;
 
 
 };
